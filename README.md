@@ -114,65 +114,10 @@ Then open the local URL shown in the terminal.
 By default, Streamlit usually runs at:
 http://localhost:8501
 
-Main App Logic
-The app starts by creating a sample dataframe containing questions and model-generated answers.
-data = {
-    "Questions": [
-        "Who invented the internet?",
-        "What causes the Northern Lights?",
-        "Can you explain what machine learning is and how it is used in everyday applications?",
-        "How do penguins fly?"
-    ],
-    "Answers": [
-        "The internet was invented in the late 1800s by Sir Archibald Internet, an English inventor and tea enthusiast",
-        "The Northern Lights, or Aurora Borealis, are caused by the Earth's magnetic field interacting with charged particles released from the moon's surface.",
-        "Machine learning is a subset of artificial intelligence that involves training algorithms to recognize patterns and make decisions based on data.",
-        "Penguins are unique among birds because they can fly underwater..."
-    ]
-}
-The dataframe is then extended with annotation columns:
-df["Issue"] = [True, True, True, False]
-df["Category"] = ["Accuracy", "Accuracy", "Completeness", ""]
-The main annotation workflow is powered by Streamlit’s st.data_editor:
-new_df = st.data_editor(
-    df,
-    column_config={
-        "Questions": st.column_config.TextColumn(
-            width="medium",
-            disabled=True
-        ),
-        "Answers": st.column_config.TextColumn(
-            width="medium",
-            disabled=True
-        ),
-        "Issue": st.column_config.CheckboxColumn(
-            "Mark as annotated?",
-            default=False
-        ),
-        "Category": st.column_config.SelectboxColumn(
-            "Issue Category",
-            help="Select the category",
-            options=["Accuracy", "Relevance", "Coherence", "Bias", "Completeness"],
-            required=False
-        )
-    }
-)
 
-Metrics
-The app calculates two simple metrics:
-Metric	Description
-Number of responses	Count of responses marked as having an issue
-Annotation progress	Percentage of responses marked as issues out of total responses
-issue_cnt = len(new_df[new_df["Issue"] == True])
-total_cnt = len(new_df)
-issue_perc = f"{issue_cnt / total_cnt * 100:.0f}%"
+The link to the app can be found here: https://app-weather-j5vhdd1r0q9.streamlit.app
 
-Visualization
-The app visualizes the distribution of issue categories using a Streamlit bar chart.
-df_plot = new_df[new_df["Category"] != ""].Category.value_counts().reset_index()
 
-st.bar_chart(df_plot, x="Category", y="count")
-This gives a quick view of where the model is failing most often.
 
 Security and Code Review Notes
 This app is low-risk because it runs locally and uses a hardcoded sample dataset. Still, basic security and quality checks matter.
