@@ -98,9 +98,10 @@ data-evaluation-app/
 ├── README.md
 ├── requirements.txt
 └── screenshots/
-    ├── annotation-table.png
-    ├── filters.png
-    └── metrics-chart.png
+    ├── data-app.png
+    
+   
+    
 
 Installation
 Clone the repository:
