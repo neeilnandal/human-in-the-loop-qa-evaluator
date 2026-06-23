@@ -99,22 +99,8 @@ data-evaluation-app/
 ├── requirements.txt
 └── screenshots/
     ├── data-app.png
-    
+    |-- flow.png
    
-    
-
-Installation
-Clone the repository:
-git clone https://github.com/your-username/data-evaluation-app.git
-cd data-evaluation-app
-Create and activate a virtual environment:
-python -m venv venv
-On macOS or Linux:
-source venv/bin/activate
-On Windows:
-venv\Scripts\activate
-Install dependencies:
-pip install -r requirements.txt
 
 Requirements
 Create a requirements.txt file with:
